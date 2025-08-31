@@ -1,17 +1,16 @@
-/* General */
 :root {
-  --bg: #0f172a;         /* slate-900 */
-  --panel: #0b1220;      /* deep card */
+  --bg: #0f172a;         
+  --panel: #0b1220;      
   --panel-contrast: #0b1220f5;
-  --text: #e2e8f0;       /* slate-200 */
-  --muted: #94a3b8;      /* slate-400 */
-  --border: #1f2937;     /* slate-800 */
-  --accent: #3b82f6;     /* blue-500 */
+  --text: #e2e8f0;       
+  --muted: #94a3b8;      
+  --border: #1f2937;     
+  --accent: #3b82f6;     
   --code-bg: #0b1220;
   --code-border: #1f2937;
   --blockquote-bg: rgba(255,255,255,0.03);
-  --toolbar-icon: #e5e7eb;           /* brighter by default in dark */
-  --toolbar-icon-active: #ffffff;    /* bright for active/hover */
+  --toolbar-icon: #e5e7eb;           
+  --toolbar-icon-active: #ffffff;    
   --toolbar-bg: var(--panel);
   --toolbar-hover: rgba(255,255,255,0.06);
   --toolbar-shadow: 0 2px 8px rgba(0,0,0,.25);
@@ -27,7 +26,7 @@
   --code-bg: #f6f8fa;
   --code-border: #d0d7de;
   --blockquote-bg: #f8fafc;
-  --toolbar-icon: #1f2937;           /* darker for light bg */
+  --toolbar-icon: #1f2937;           
   --toolbar-icon-active: #111827;
   --toolbar-bg: #ffffff;
   --toolbar-hover: rgba(0,0,0,0.06);
@@ -42,19 +41,22 @@ body {
 }
 .light body { background: var(--bg); }
 
-/* Editor and preview */
 #preview { background: transparent; }
 
 .EasyMDEContainer { height: 100%; display: flex; flex-direction: column; }
 .EasyMDEContainer .CodeMirror { flex: 1 1 auto; height: 100% !important; font-size: 0.98rem; background: var(--panel); color: var(--text); }
-/* Enhanced toolbar layout for consistent alignment */
+
 .editor-toolbar {
   background: var(--toolbar-bg);
   border-color: var(--border) !important;
   border-radius: 12px 12px 0 0;
   box-shadow: var(--toolbar-shadow);
   padding: 6px 8px;
-  line-height: 1; /* prevent baseline drift */
+  line-height: 1;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  border-bottom: 1px solid var(--border) !important;
 }
 .editor-toolbar a {
   color: var(--toolbar-icon) !important;
@@ -73,7 +75,7 @@ body {
   color: var(--toolbar-icon-active) !important;
   background: var(--toolbar-hover) !important;
 }
-/* Ensure all icon glyphs inherit the color (FA4 + FA6 + SVGs) */
+
 .editor-toolbar .fa, .editor-toolbar .fa:before,
 .editor-toolbar svg { color: inherit !important; fill: currentColor !important; }
 .editor-toolbar i.separator { border-color: var(--border) !important; opacity: .7; margin: 0 6px !important; }
@@ -81,20 +83,18 @@ body {
 .CodeMirror-gutters { background: var(--panel); border-right: 1px solid var(--border); }
 .cm-s-default .CodeMirror-linenumber { color: var(--muted); }
 
-/* Make the separators visible in dark */
 .editor-toolbar i.separator { border-color: var(--border) !important; opacity: .7; }
-/* Ensure FA4 icons inherit color properly */
+
 .editor-toolbar .fa, .editor-toolbar .fa:before { color: inherit; }
-/* make icons aligned */
+
 .editor-toolbar .fa { width: 18px; text-align: center; }
 
 .navbar .nav-link, .navbar-brand { color: inherit; }
 .navbar .dropdown-item i { width: 1.25rem; }
-/* Ensure brand has correct color in dark mode and on hover */
+
 .dark .navbar .navbar-brand { color: #e5e7eb !important; }
 .dark .navbar .navbar-brand:hover { color: #ffffff !important; background: transparent !important; }
 
-/* Markdown content */
 .markdown-body { max-width: 100%; color: var(--text); line-height: 1.7; }
 .markdown-body h1, .markdown-body h2, .markdown-body h3,
 .markdown-body h4, .markdown-body h5, .markdown-body h6 { color: var(--text); margin-top: 1.25rem; font-weight: 700; }
@@ -106,13 +106,13 @@ body {
 .markdown-body pre, .markdown-body code { background: var(--code-bg); border: 1px solid var(--code-border); color: var(--text); }
 .markdown-body pre { padding: .75rem; border-radius: 8px; overflow: auto; }
 .markdown-body table { border-collapse: collapse; width: 100%; background: var(--panel); }
-/* Stronger specificity to override Bootstrap's .table */
+
 .markdown-body table th, .markdown-body table td { border: 1px solid var(--border); padding: .6rem .8rem; color: var(--text) !important; opacity: 1 !important; }
 .markdown-body table thead th { color: var(--text) !important; }
 .markdown-body table tbody td { color: var(--text) !important; }
 .markdown-body table tr, .markdown-body table td, .markdown-body table th { filter: none !important; }
 .markdown-body table th { background: #1b2433; color: #e2e8f0 !important; font-weight: 600; }
-/* Dark mode body cell backgrounds for contrast */
+
 .markdown-body table td { background: rgba(255,255,255,0.065); }
 .markdown-body tr:nth-child(even) td { background: rgba(255,255,255,0.06); }
 .markdown-body tr:hover td { background: rgba(59,130,246,0.12); }
@@ -120,7 +120,6 @@ body {
 .light .markdown-body tr:nth-child(even) td { background: #fafbfc; }
 #preview img { max-width: 100%; height: auto; }
 
-/* Hard overrides for dark-mode table inside preview to defeat any framework table styles */
 .dark #preview .markdown-body table { background: var(--panel) !important; border-color: var(--border) !important; }
 .dark #preview .markdown-body table td,
 .dark #preview .markdown-body table th {
@@ -133,26 +132,23 @@ body {
 .dark #preview .markdown-body tr:nth-child(even) td { background-color: rgba(255,255,255,0.1) !important; }
 .dark #preview .markdown-body tr:hover td { background-color: rgba(59,130,246,0.18) !important; }
 
-/* Force bright text for all table content in dark mode */
 .dark .markdown-body table,
 .dark .markdown-body table * {
   color: var(--text) !important;
   opacity: 1 !important;
 }
-/* Extra specificity for body cells and their content */
+
 .dark .markdown-body table td,
 .dark .markdown-body table td * { color: var(--text) !important; }
-/* Max specificity hammer for stubborn overrides */
+
 .dark #preview .markdown-body table tbody td,
 .dark #preview .markdown-body table tbody td * {
   color: #e5e7eb !important;
   opacity: 1 !important;
 }
 
-/* Utility */
 button.nav-link { cursor: pointer; }
 
-/* Modern shell */
 .app-header {
   backdrop-filter: blur(12px);
   background: linear-gradient(180deg, var(--panel-contrast), transparent);
@@ -175,35 +171,30 @@ button.nav-link { cursor: pointer; }
 }
 .pane-header .text-muted { color: var(--muted) !important; }
 
-/* List group harmonization in modal */
 .list-group-item { background: var(--panel); color: var(--text); border-color: var(--border); }
 .modal-content.bg-body { background: var(--panel); color: var(--text); border-color: var(--border); }
 
-/* Theme toggle */
 .form-switch .form-check-input { cursor: pointer; }
 
-/* Slightly lighter CodeMirror caret & line-height for readability */
 .EasyMDEContainer .CodeMirror { line-height: 1.55; }
 
-/* Toolbar can wrap into multiple rows (left-aligned) */
 .editor-toolbar {
   display: flex !important;
-  flex-wrap: wrap !important;   /* allow wrapping */
+  flex-wrap: wrap !important;   
   align-items: center !important;
   white-space: normal !important;
-  overflow: visible !important; /* no horizontal scrollbar */
+  overflow: visible !important; 
   text-align: left !important;
-  gap: 2px 4px;                 /* spacing between rows/items */
+  gap: 2px 4px;                 
 }
 .editor-toolbar a, .editor-toolbar i.separator {
   display: inline-flex !important;
   flex: 0 0 auto !important;
   vertical-align: middle !important;
 }
-/* Keep table icon aligned */
+
 .editor-toolbar .fa-table { line-height: 1 !important; font-size: 1.05rem !important; }
 
-/* Fix Bootstrap conflict: EasyMDE 'table' toolbar button should not take full width */
 .editor-toolbar a.table,
 .editor-toolbar button.table {
   display: inline-flex !important;
@@ -216,11 +207,9 @@ button.nav-link { cursor: pointer; }
   padding: 0 8px !important;
 }
 
-/* Ensure navbar dropdown overlays editor panes */
 .navbar { position: relative; z-index: 1500; }
 .dropdown-menu { z-index: 2000; }
 
-/* Force FA6 icons to render in dropdown */
 .dropdown-menu .fa, .dropdown-menu .fa-solid, .dropdown-menu i.fa-solid {
   font-family: "Font Awesome 6 Free" !important;
   font-weight: 900 !important;
@@ -228,10 +217,9 @@ button.nav-link { cursor: pointer; }
   width: 1.25rem;
   text-align: center;
 }
-/* Also ensure icon color follows text */
+
 .dropdown-menu i { color: inherit; }
 
-/* Dropdown theming */
 .dropdown-menu { border-radius: 10px; border: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,.15); }
 .dropdown-menu .dropdown-item { padding: .6rem .9rem; display: flex; align-items: center; gap: .6rem; }
 .dropdown-menu .dropdown-item i { width: 1.1rem; text-align: center; }
@@ -239,15 +227,13 @@ button.nav-link { cursor: pointer; }
 .dark .dropdown-menu { background: #0f172a; color: #e5e7eb; border-color: #1f2937; box-shadow: 0 12px 28px rgba(0,0,0,.45); }
 .dark .dropdown-menu .dropdown-item { color: #e5e7eb; }
 .dark .dropdown-menu .dropdown-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
-/* caret contrast */
+
 .dropdown-menu::before { border-bottom-color: var(--border); }
 
-/* Dark mode overrides to make toolbar icons white */
 .dark .editor-toolbar a { color: #ffffff !important; }
 .dark .editor-toolbar a:hover, .dark .editor-toolbar a.active { color: #ffffff !important; background: rgba(255,255,255,0.12) !important; }
 .dark .editor-toolbar .fa, .dark .editor-toolbar .fa:before, .dark .editor-toolbar svg { color: #ffffff !important; fill: #ffffff !important; }
 
-/* Dark mode toolbar hover/focus */
 .dark .editor-toolbar a:hover,
 .dark .editor-toolbar a:focus,
 .dark .editor-toolbar a.active {
@@ -256,17 +242,16 @@ button.nav-link { cursor: pointer; }
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25) !important;
 }
 .dark .editor-toolbar a:focus-visible {
-  box-shadow: inset 0 0 0 2px #60a5fa !important; /* blue ring for keyboard focus */
+  box-shadow: inset 0 0 0 2px #60a5fa !important; 
 }
 
-/* Dark mode toolbar buttons - unified look */
 .dark .editor-toolbar a,
 .dark .editor-toolbar button {
   color: #ffffff !important;
   border-radius: 8px !important;
   transition: background .15s ease, box-shadow .15s ease, color .15s ease;
 }
-/* Softer hover/active (no solid white block) */
+
 .dark .editor-toolbar a:hover,
 .dark .editor-toolbar button:hover,
 .dark .editor-toolbar a.active,
@@ -274,20 +259,17 @@ button.nav-link { cursor: pointer; }
   background: rgba(255,255,255,0.12) !important;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.18) !important;
 }
-/* Remove any default white background from library styles */
+
 .dark .editor-toolbar a:hover *,
 .dark .editor-toolbar button:hover * { background: transparent !important; }
 
-/* Navbar icons ensure FA6 solid */
 .navbar .fa-solid { font-family: "Font Awesome 6 Free" !important; font-weight: 900 !important; }
 
-/* Document title input */
 .doc-title-input { width: 220px; background: transparent; color: var(--text); border-color: var(--border); }
 .doc-title-input::placeholder { color: var(--muted); }
 .dark .doc-title-input { background: rgba(255,255,255,0.06); color: #e5e7eb; border-color: #374151; }
 .dark .doc-title-input:focus { background: rgba(255,255,255,0.09); color: #fff; }
 
-/* Navbar button alignment */
 .navbar .nav-link,
 .navbar .dropdown-toggle {
   display: inline-flex;
@@ -298,15 +280,15 @@ button.nav-link { cursor: pointer; }
 }
 .navbar .nav-link i,
 .navbar .dropdown-toggle i { color: inherit; }
-/* Light hover */
+
 .navbar .nav-link:hover,
 .navbar .dropdown-toggle:hover { background: rgba(0,0,0,0.06); }
-/* Dark hover */
+
 .dark .navbar .nav-link,
 .dark .navbar .dropdown-toggle { color: #e5e7eb; }
 .dark .navbar .nav-link:hover,
 .dark .navbar .dropdown-toggle:hover { background: rgba(255,255,255,0.12); color: #ffffff; }
-/* Ensure export caret/icon position */
+
 .navbar .dropdown-toggle::after { margin-left: 6px; }
 
 .doc-title-pill {
@@ -322,28 +304,23 @@ button.nav-link { cursor: pointer; }
 .doc-title-pill:focus { outline: none; box-shadow: inset 0 0 0 2px var(--accent); }
 .dark .doc-title-pill { background: rgba(255,255,255,0.06); border-color: #374151; color: #e5e7eb; }
 
-/* Theme button */
 #btn-theme { display: inline-flex; align-items: center; gap: 6px; }
 .dark #btn-theme { color: #e5e7eb; }
 .dark #btn-theme:hover { background: rgba(255,255,255,0.12); border-radius: 8px; }
 
-/* Prevent dropdown text cutoff and hide arrow caret */
 .dropdown-menu { min-width: 260px; }
 .dropdown-menu .dropdown-item { white-space: nowrap; }
 .dropdown-menu::before, .dropdown-menu::after { display: none !important; }
 
-/* Read mode helper: smooth layout change */
 #leftPane, #rightPane { transition: all .2s ease; }
 
-/* Read mode: preview full page, hide editor */
 .read-mode .app-header { position: sticky; top: 0; z-index: 1500; }
 .read-mode #leftPane { display: none !important; }
 .read-mode #rightPane { width: 100% !important; flex: 1 1 auto; }
 .read-mode #rightPane[class*="col-"] { float: none; max-width: 100%; }
-/* Expand row height in read mode */
+
 .read-mode .app-shell .row { height: calc(100vh - 72px) !important; }
 
-/* Footer behavior: normal flow in default; fixed at bottom in read mode */
 .read-mode .footer-credit-wrap {
   position: fixed;
   left: 0;
@@ -358,7 +335,6 @@ button.nav-link { cursor: pointer; }
 }
 .read-mode .footer-credit-wrap .footer-credit { pointer-events: auto; }
 
-/* Samples modal theming */
 #samplesModal .modal-content { border: 1px solid var(--border); }
 #samplesModal .list-group-item { background: var(--panel); color: var(--text); border-color: var(--border); }
 #samplesModal .list-group-item .fw-semibold { color: var(--text); }
@@ -367,22 +343,21 @@ button.nav-link { cursor: pointer; }
 #samplesModal .btn.btn-outline-primary:hover { background: var(--toolbar-hover); color: var(--text); }
 #samplesModal .btn.btn-outline-secondary { color: var(--text); border-color: var(--border); }
 #samplesModal .btn.btn-outline-secondary:hover { background: var(--toolbar-hover); color: var(--text); }
-/* Light mode hover contrast */
+
 .light #samplesModal .btn:hover { background: rgba(0,0,0,0.06); }
 
-/* Global modal dark-mode fixes */
 .dark .modal-content { background: var(--panel); color: var(--text); border-color: var(--border); }
 .dark .modal-header, .dark .modal-footer { border-color: var(--border); }
 .dark .modal-title { color: var(--text); }
 .dark .btn-close { filter: invert(1) opacity(0.8); }
 .dark .modal .btn-outline-primary, .dark .modal .btn-outline-secondary { color: var(--text); border-color: var(--border); }
 .dark .modal .btn-outline-primary:hover, .dark .modal .btn-outline-secondary:hover { background: var(--toolbar-hover); color: #fff; }
-/* About modal cards and links */
+
 .dark .modal .card.bg-body-secondary { background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: var(--text); }
 .dark .modal .card.bg-body-secondary * { color: var(--text) !important; }
 .dark .modal a { color: var(--accent); }
 .dark .modal a:hover { text-decoration: underline; }
-/* About modal: ensure strong contrast in dark mode */
+
 .dark #aboutModal .modal-content { background: var(--panel); color: var(--text); border-color: var(--border); }
 .dark #aboutModal .modal-header, .dark #aboutModal .modal-footer { border-color: var(--border); }
 .dark #aboutModal .modal-title { color: var(--text); }
@@ -394,7 +369,6 @@ button.nav-link { cursor: pointer; }
 .dark #aboutModal a { color: var(--accent) !important; }
 .dark #aboutModal a:hover { text-decoration: underline; }
 
-/* Footer credit box */
 .footer-credit {
   padding: 10px 18px;
   border-radius: 14px;
