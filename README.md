@@ -18,7 +18,7 @@ Free, online, no‑signup Markdown editor with live GitHub‑style preview, impo
 - 🎛️ Frontend: EasyMDE, marked, highlight.js, Bootstrap 5, Font Awesome, Primer CSS
 - ➕ Extras: html2pdf.js, KaTeX, Mermaid, FileSaver
 
-### 🗃️ Repository Structure
+### 🗃️ Application File Structure
 ```text
 📦 markdown-editor/
 ├─ 🐍 app.py                 # Flask app entrypoint (exposes `app`)
